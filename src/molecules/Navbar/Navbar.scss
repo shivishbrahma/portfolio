@@ -20,7 +20,6 @@
         .Navbar-brand-text {
             display: inline-block;
             font-size: 1.25rem;
-            // line-height: 2;
         }
     }
 
@@ -33,15 +32,68 @@
         .Navbar-item a {
             text-decoration: none;
 
-            // &.active,
-            // &:hover {
-            //     text-decoration: underline;
-            // }
+            .Navbar-item-name {
+                font-weight: bold;
+                padding-left: 0.5rem;
+            }
         }
     }
 
     .Navbar-toggler {
         display: none;
+    }
+
+    // Floating Navbar
+    &.Navbar-float {
+        position: fixed;
+        top: 50%;
+        right: 0;
+        height: calc(100% - 4rem);
+        max-height: 20rem;
+        transform: translate(0, -50%);
+        z-index: 10;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        .Navbar-list {
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            order: 2;
+            .Navbar-item {
+                min-width: 3rem;
+                min-height: 3rem;
+                .Navlink {
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+                .Navbar-item-name {
+                    display: none;
+                }
+            }
+        }
+        .Navbar-brand {
+            order: 1;
+            margin: 0;
+            justify-content: center;
+            .Navbar-brand-text {
+                display: none;
+            }
+        }
+    }
+
+    // Fixed Navbar
+    &.Navbar-fixed {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 10;
     }
 }
 
@@ -70,6 +122,7 @@
     }
 
     .Navbar.active {
+        height: 100vh;
         .Navbar-list {
             gap: 1rem;
             transform: translate(0, 0);
