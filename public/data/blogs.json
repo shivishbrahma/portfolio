@@ -50,7 +50,7 @@
         },
         {
             "blog_website": 0,
-            "img_url": "https://res.cloudinary.com/practicaldev/image/fetch/s--Oqq-ofCi--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/g4vrvcah3t86ib1s8r2h.png",
+            "img_url": "https://media.dev.to/cdn-cgi/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fg4vrvcah3t86ib1s8r2h.png",
             "title": "Creating a DotEnv Loader in PHP",
             "url": "https://dev.to/shivishbrahma/creating-a-dotenv-loader-in-php-jkl",
             "description": "From the list of some of the most common libraries that are heavily used in a PHP framework project...",
@@ -64,7 +64,7 @@
         },
         {
             "blog_website": 0,
-            "img_url": "https://res.cloudinary.com/practicaldev/image/fetch/s--i0ViBxy6--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/5kybkw3w9lqa1khc0a1p.png",
+            "img_url": "https://media.dev.to/cdn-cgi/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F5kybkw3w9lqa1khc0a1p.png",
             "title": "Building a ToDo App in React",
             "url": "https://dev.to/shivishbrahma/building-a-todo-app-in-react-51c8",
             "description": "A ToDo App is a very beginner level app for any frontend developer. A basic ToDo app has...",
@@ -78,7 +78,7 @@
         },
         {
             "blog_website": 0,
-            "img_url": "https://res.cloudinary.com/practicaldev/image/fetch/s--5fJxFgxf--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/kt7jmjn0lxpbfp867imd.png",
+            "img_url": "https://media.dev.to/cdn-cgi/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fkt7jmjn0lxpbfp867imd.png",
             "title": "Designing a Markdown Editor in React",
             "url": "https://dev.to/shivishbrahma/designing-a-markdown-editor-in-react-7cb",
             "description": "Ever since the popularity of open-source libraries, Markdown has always been the primary text format...",
@@ -92,7 +92,7 @@
         },
         {
             "blog_website": 0,
-            "img_url": "https://res.cloudinary.com/practicaldev/image/fetch/s--2eYhiWgR--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/sjzbzcmfnjwfohd2narj.png",
+            "img_url": "https://media.dev.to/cdn-cgi/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fsjzbzcmfnjwfohd2narj.png",
             "title": "Deploying React App in GitHub Pages",
             "url": "https://dev.to/shivishbrahma/deploying-react-app-in-github-pages-4jfd",
             "description": "Developing a React App has always been a fascinating experience as a Frontend Developer. To build...",
@@ -105,7 +105,7 @@
         },
         {
             "blog_website": 0,
-            "img_url": "https://res.cloudinary.com/practicaldev/image/fetch/s--sZ0I69e6--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/vptsqyr0ivfbzur7375s.png",
+            "img_url": "https://media.dev.to/cdn-cgi/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fvptsqyr0ivfbzur7375s.png",
             "title": "Designing an Activity Calendar in React",
             "url": "https://dev.to/shivishbrahma/designing-an-activity-calendar-in-react-47k2",
             "description": "Activity Calendar has become popular after open-source platforms like Github, Kaggle starting used to...",
