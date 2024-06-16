@@ -64,7 +64,7 @@
             "videos": []
         },
         {
-            "name": "Travel Map",
+            "name": "TravMave",
             "cover": "images/projects/travelmap.webp",
             "description": "",
             "url": "",
@@ -79,7 +79,7 @@
             "type": "",
             "displayName": "travel-map",
             "website": "",
-            "summary": "A Laravel Ecommerce Portal for Agro Goods",
+            "summary": "A Travel Map to plan trips and save memories",
             "primaryLanguage": "PHP",
             "languages": [
                 "PHP",

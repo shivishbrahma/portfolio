@@ -1,0 +1,26 @@
+.DarkModeToggler {
+    cursor: pointer;
+    display: inline-block;
+    width: 4rem;
+    height: 2rem;
+    border-radius: 2.5rem;
+    position: relative;
+    transition: 2s;
+
+    background-color: #61aafe;
+    color: #fafd0f;
+    .icon {
+        position: absolute;
+        left: 0.5rem;
+        top: 0.25rem;
+        transition: left ease-in-out 1.5s, color ease-in-out 0.85s;
+        font-size: 1.25rem;
+    }
+    &.DarkModeToggler__dark {
+        .icon {
+            left: calc(100% - 1.5rem);
+            color: white;
+        }
+        background-color: black;
+    }
+}
