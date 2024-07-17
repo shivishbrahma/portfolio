@@ -2,6 +2,7 @@ import React from "react";
 // import PropTypes from 'prop-types';
 import { marked } from "marked";
 
+import Loader from "../../atoms/Loader/Loader";
 import { loadMockup } from "../../services/fetchService";
 import "./Resume.scss";
 
@@ -28,11 +29,14 @@ const ResumeContent = React.forwardRef((props, ref) => {
     };
 
     React.useEffect(() => {
+        setLoading(true);
         loadMockup("resume").then(function (data) {
             setResume(data);
             setLoading(false);
         });
     }, []);
+
+    if (loading || !resume) return <Loader loading />;
 
     return (
         <React.Fragment>

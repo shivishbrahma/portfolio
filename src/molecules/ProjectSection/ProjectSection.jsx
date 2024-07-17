@@ -1,11 +1,12 @@
 import React from 'react';
+// import PropTypes from 'prop-types';
+
 import PageSection from '../../atoms/PageSection/PageSection';
 import Card from '../../atoms/Card/Card';
 import Button from '../../atoms/Button/Button';
-// import PropTypes from 'prop-types';
-import './ProjectSection.scss';
-import { loadMockup } from '../../services/fetchService';
 import Loader from "../../atoms/Loader/Loader";
+import { loadMockup } from '../../services/fetchService';
+import './ProjectSection.scss';
 
 function ProjectSection({ ...otherProps }) {
 	const [projects, setProjects] = React.useState([]);
