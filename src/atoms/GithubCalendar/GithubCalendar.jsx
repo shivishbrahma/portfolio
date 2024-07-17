@@ -1,9 +1,11 @@
 import React from "react";
 import ReactTooltip from "react-tooltip";
-import Calendar, { Skeleton as CalendarSkeleton } from "./ActivityCalendar";
+import Calendar from "./ActivityCalendar";
+// import { Skeleton as CalendarSkeleton } from "./ActivityCalendar"
 import { getContributionData } from "../../services/fetchService";
 // import PropTypes from 'prop-types';
 import "./GithubCalendar.scss";
+import Loader from "../Loader/Loader";
 
 const DEFAULT_THEME = {
     level4: "#216e39",
@@ -35,7 +37,7 @@ function GithubCalendar({ username, year, theme, showTooltip, ...calendarProps }
     }
 
     if (loading || !data) {
-        return <CalendarSkeleton loading />;
+        return <Loader loading />;
     }
 
     const labels = {
