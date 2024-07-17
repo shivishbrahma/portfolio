@@ -1,18 +1,29 @@
 import React from 'react';
+// import PropTypes from 'prop-types';
+
 import PageSection from '../../atoms/PageSection/PageSection';
 import Card from '../../atoms/Card/Card';
 import Button from '../../atoms/Button/Button';
-// import PropTypes from 'prop-types';
-import './ProjectSection.scss';
+import Loader from "../../atoms/Loader/Loader";
 import { loadMockup } from '../../services/fetchService';
+import './ProjectSection.scss';
 
 function ProjectSection({ ...otherProps }) {
 	const [projects, setProjects] = React.useState([]);
+    const [loading, setLoading] = React.useState(false);
+
 	React.useEffect(() => {
+        setLoading(true);
 		loadMockup('projects').then(function (data) {
 			setProjects(data.projects);
-		});
+            setLoading(false);
+		})
+        .catch(function (error) {
+            console.error(error);
+        });
 	}, []);
+
+    if (loading || !projects) return <Loader loading />;
 
 	return (
 		<PageSection sectionTitle="Featured Projects" {...otherProps}>

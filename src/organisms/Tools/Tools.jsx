@@ -1,19 +1,24 @@
 import React from 'react';
-import Card from '../../atoms/Card/Card';
+
 import { loadMockup } from '../../services/fetchService';
+import Card from '../../atoms/Card/Card';
+import Loader from "../../atoms/Loader/Loader";
 import Netstats from '../../tools/Netstats/Netstats';
 import './Tools.scss';
 
 export default function Tools(props) {
 	const [currentTool, setCurrentTool] = React.useState('');
 	const [tools, setTools] = React.useState([]);
+    const [loading, setLoading] = React.useState(false);
 
 	React.useEffect(() => {
+        setLoading(true);
 		loadMockup('tools').then(function (data) {
 			const sortedTools = data.tools.sort((a, b) => {
 				return a.name.localeCompare(b.name);
 			});
 			setTools(sortedTools);
+            setLoading(false);
 		});
 		setCurrentTool(window.location.hash.split('/').pop());
 	}, []);
@@ -23,6 +28,9 @@ export default function Tools(props) {
 	}
 
 	const { ...otherProps } = props;
+
+    if (loading || !tools) return <Loader loading />;
+
 	return (
 		<section className="Tools" {...otherProps}>
 			<h1 className="Tools__title">Tools</h1>

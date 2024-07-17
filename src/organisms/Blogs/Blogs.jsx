@@ -1,5 +1,7 @@
 import { parseISO } from 'date-fns';
 import React from 'react';
+
+import Loader from "../../atoms/Loader/Loader";
 import Card from '../../atoms/Card/Card';
 import { loadMockup } from '../../services/fetchService';
 import './Blogs.scss';
@@ -7,12 +9,15 @@ import './Blogs.scss';
 export default function Blogs() {
 	const [blogWebs, setBlogWebs] = React.useState([]);
 	const [blogs, setBlogs] = React.useState([]);
+    const [loading, setLoading] = React.useState(false);
 
 	React.useEffect(() => {
+        setLoading(true);
 		loadMockup('blogs').then(function (data) {
 			setBlogWebs(data.blog_websites);
 		});
 		loadMockup('blogs').then(function (data) {
+            setLoading(false);
 			const sortedBlogs = data.blogs.sort((a, b) => {
 				return parseISO(b.date) - parseISO(a.date);
 			});
@@ -21,6 +26,8 @@ export default function Blogs() {
 			} else setBlogs(sortedBlogs);
 		});
 	}, []);
+
+    if (loading) return <Loader loading />;
 
 	return (
 		<section className="Blogs">

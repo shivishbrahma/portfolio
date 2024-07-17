@@ -13,7 +13,7 @@ function Resume(props) {
 	});
 
 	return (
-		<section className="Resume">
+		<section className="Resume" {...props}>
 			<div className="Resume-container">
 				<ResumeContent ref={printableComponentRef} />
 			</div>

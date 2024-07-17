@@ -29,6 +29,7 @@
 - [ ] Image (jsx, scss, test)
 - [x] Card (jsx, scss, test)
 - [ ] Tag (jsx, scss, test)
+- [ ] Loader (jsx, scss, test)
 
 ### Tools
 
