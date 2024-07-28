@@ -1,6 +1,6 @@
 {
     "name": "portfolio",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "private": true,
     "dependencies": {
         "@testing-library/jest-dom": "^5.16.2",
@@ -16,11 +16,9 @@
         "react-scripts": "^5.0.0",
         "react-to-print": "^2.14.0",
         "react-tooltip": "^4.2.21",
+        "sass": "^1.77.8",
         "tinycolor2": "^1.4.2",
         "web-vitals": "^2.1.4"
-    },
-    "devDependencies": {
-        "node-sass": "^8.0.0"
     },
     "scripts": {
         "start": "react-scripts start",
