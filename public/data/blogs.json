@@ -4,19 +4,19 @@
             "title": "DEV Community",
             "website": "https://dev.to/",
             "url": "https://dev.to/shivishbrahma",
-            "icon": "https://d2fltix0v2e0sb.cloudfront.net/dev-black.png"
+            "icon": "https://dev-to-uploads.s3.amazonaws.com/uploads/logos/resized_logo_UQww2soKuUsjaOGNB38o.png"
         },
         {
             "title": "Medium",
             "website": "https://medium.com/",
             "url": "https://shivishbrahma.medium.com/",
-            "icon": "https://miro.medium.com/fit/c/512/512/1*sHhtYhaCe2Uc3IU0IgKwIQ.png"
+            "icon": "https://miro.medium.com/fit/c/152/152/1*sHhtYhaCe2Uc3IU0IgKwIQ.png"
         },
         {
-            "title": "Publog",
+            "title": "Github",
             "website": "https://github.io/",
             "url": "https://shivishbrahma.github.io/publog/",
-            "icon": "https://shivishbrahma.github.io/publog/public/android-chrome-512x512.png"
+            "icon": "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
         }
     ],
     "blogs": [
@@ -50,21 +50,34 @@
         },
         {
             "blog_website": 0,
-            "img_url": "https://media.dev.to/cdn-cgi/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fg4vrvcah3t86ib1s8r2h.png",
+            "img_url": "https://media.dev.to/cdn-cgi/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fhsostoqsrl16ixfm4lss.png",
+            "title": "Building a Seamless OTP Input Field in React: A Step-by-Step Guide",
+            "url": "https://dev.to/shivishbrahma/building-a-seamless-otp-input-field-in-react-51pd",
+            "description": "In today's digital age, ensuring secure access to online services is paramount, and One-Time...",
+            "tags": [
+                "react",
+                "javascript",
+                "webdev",
+                "component"
+            ],
+            "date": "2024-07-27T17:25:05Z"
+        },
+        {
+            "blog_website": 0,
+            "img_url": "https://media.dev.to/cdn-cgi/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fxn10i6fkqp9b73lfplwg.png",
             "title": "Creating a DotEnv Loader in PHP",
             "url": "https://dev.to/shivishbrahma/creating-a-dotenv-loader-in-php-jkl",
             "description": "From the list of some of the most common libraries that are heavily used in a PHP framework project...",
             "tags": [
                 "php",
-                "symfony",
-                "phpunit",
-                "backend"
+                "dotenv",
+                "webdev"
             ],
             "date": "2022-04-10T06:46:27Z"
         },
         {
             "blog_website": 0,
-            "img_url": "https://media.dev.to/cdn-cgi/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F5kybkw3w9lqa1khc0a1p.png",
+            "img_url": "https://media.dev.to/cdn-cgi/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fm055ukww2jp9hsml5jd1.png",
             "title": "Building a ToDo App in React",
             "url": "https://dev.to/shivishbrahma/building-a-todo-app-in-react-51c8",
             "description": "A ToDo App is a very beginner level app for any frontend developer. A basic ToDo app has...",
@@ -78,7 +91,7 @@
         },
         {
             "blog_website": 0,
-            "img_url": "https://media.dev.to/cdn-cgi/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fkt7jmjn0lxpbfp867imd.png",
+            "img_url": "https://media.dev.to/cdn-cgi/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8qf65ftalb0mmpw6ya1p.png",
             "title": "Designing a Markdown Editor in React",
             "url": "https://dev.to/shivishbrahma/designing-a-markdown-editor-in-react-7cb",
             "description": "Ever since the popularity of open-source libraries, Markdown has always been the primary text format...",
@@ -92,7 +105,7 @@
         },
         {
             "blog_website": 0,
-            "img_url": "https://media.dev.to/cdn-cgi/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fsjzbzcmfnjwfohd2narj.png",
+            "img_url": "https://media.dev.to/cdn-cgi/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Funbzpmp5z1lb1f8pfuld.png",
             "title": "Deploying React App in GitHub Pages",
             "url": "https://dev.to/shivishbrahma/deploying-react-app-in-github-pages-4jfd",
             "description": "Developing a React App has always been a fascinating experience as a Frontend Developer. To build...",
@@ -105,7 +118,7 @@
         },
         {
             "blog_website": 0,
-            "img_url": "https://media.dev.to/cdn-cgi/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fvptsqyr0ivfbzur7375s.png",
+            "img_url": "https://media.dev.to/cdn-cgi/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F3uv06i9n1axbshuc015z.png",
             "title": "Designing an Activity Calendar in React",
             "url": "https://dev.to/shivishbrahma/designing-an-activity-calendar-in-react-47k2",
             "description": "Activity Calendar has become popular after open-source platforms like Github, Kaggle starting used to...",
@@ -119,7 +132,7 @@
         },
         {
             "blog_website": 0,
-            "img_url": "https://res.cloudinary.com/practicaldev/image/fetch/s--KwT_0VoI--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/xhunqq5o76vi3gwxesvh.png",
+            "img_url": "https://media.dev.to/cdn-cgi/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Femrp8zknfwuerg2mrmm3.png",
             "title": "Designing a Typewriter React Component",
             "url": "https://dev.to/shivishbrahma/designing-a-typewriter-react-component-3kea",
             "description": "We are pretty much familiar with the Typewriter effect, although we might not be acquainted with a...",
