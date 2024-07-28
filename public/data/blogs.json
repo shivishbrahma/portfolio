@@ -145,9 +145,9 @@
         },
         {
             "blog_website": 2,
-            "img_url": "http://shivishbrahma.github.io/publog/publog/public/images/0002_cover.webp",
+            "img_url": "http://shivishbrahma.github.io/publog/public/images/0002_cover.webp",
             "title": "Custom WAMMP Setup in Windows (mod_wsgi support)",
-            "url": "http://shivishbrahma.github.io/publog/publog/windows-wammp-setup",
+            "url": "http://shivishbrahma.github.io/publog/windows-wammp-setup",
             "description": "or",
             "tags": [
                 "windows",
@@ -158,9 +158,9 @@
         },
         {
             "blog_website": 2,
-            "img_url": "http://shivishbrahma.github.io/publog/publog/public/images/0001_cover_en.webp",
+            "img_url": "http://shivishbrahma.github.io/publog/public/images/0001_cover_en.webp",
             "title": "Introduction To Ruby",
-            "url": "http://shivishbrahma.github.io/publog/publog/introduction-to-ruby",
+            "url": "http://shivishbrahma.github.io/publog/introduction-to-ruby",
             "description": "Ruby Hello World Program",
             "tags": [
                 "ruby",
