@@ -2,9 +2,7 @@ name: Update Assets
 
 on:
     push:
-        branches: ['main']
-    pull_request:
-        branches: ['main']
+        branches: ['reactify']
 
 jobs:
   build:
@@ -33,6 +31,6 @@ jobs:
       shell: bash
     - run : git commit -m "Updating Assets by github-actions"
       shell: bash
-    - run : git push origin HEAD:main --force
+    - run : git push origin HEAD:reactify --force
       shell: bash
     
