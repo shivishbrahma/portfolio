@@ -4,19 +4,19 @@
             "title": "DEV Community",
             "website": "https://dev.to/",
             "url": "https://dev.to/shivishbrahma",
-            "icon": "https://dev-to-uploads.s3.amazonaws.com/uploads/logos/resized_logo_UQww2soKuUsjaOGNB38o.png"
+            "icon": "https://d2fltix0v2e0sb.cloudfront.net/dev-black.png"
         },
         {
             "title": "Medium",
             "website": "https://medium.com/",
             "url": "https://shivishbrahma.medium.com/",
-            "icon": "https://miro.medium.com/fit/c/152/152/1*sHhtYhaCe2Uc3IU0IgKwIQ.png"
+            "icon": "https://miro.medium.com/fit/c/512/512/1*sHhtYhaCe2Uc3IU0IgKwIQ.png"
         },
         {
-            "title": "Github",
+            "title": "Publog",
             "website": "https://github.io/",
             "url": "https://shivishbrahma.github.io/publog/",
-            "icon": "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+            "icon": "https://shivishbrahma.github.io/publog/public/android-chrome-512x512.png"
         }
     ],
     "blogs": [
@@ -142,6 +142,31 @@
                 "component"
             ],
             "date": "2022-02-18T19:30:57Z"
+        },
+        {
+            "blog_website": 2,
+            "img_url": "http://shivishbrahma.github.io/publog/publog/public/images/0002_cover.webp",
+            "title": "Custom WAMMP Setup in Windows (mod_wsgi support)",
+            "url": "http://shivishbrahma.github.io/publog/publog/windows-wammp-setup",
+            "description": "or",
+            "tags": [
+                "windows",
+                "apache",
+                "php"
+            ],
+            "date": "2023-04-30T17:25:06+00:00"
+        },
+        {
+            "blog_website": 2,
+            "img_url": "http://shivishbrahma.github.io/publog/publog/public/images/0001_cover_en.webp",
+            "title": "Introduction To Ruby",
+            "url": "http://shivishbrahma.github.io/publog/publog/introduction-to-ruby",
+            "description": "Ruby Hello World Program",
+            "tags": [
+                "ruby",
+                "programming"
+            ],
+            "date": "2022-04-01T10:43:06+00:00"
         }
     ]
 }
