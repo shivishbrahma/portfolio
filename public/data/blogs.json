@@ -25,7 +25,7 @@
             "img_url": "https://cdn-images-1.medium.com/max/759/0*09gSRVh0jzuksrtb.png",
             "title": "Image Translation of Renaissance Figures To Digital Photographs",
             "url": "https://shivishbrahma.medium.com/image-translation-of-renaissance-figures-to-digital-photographs-14909169a891?source=rss-98a5c8518070------2",
-            "description": "It has always been a fascinating idea, how someone like Newton or Gauss could have looked like in real life. We have built something very similar for our final year project. Our AI model tries to predict the real human digital face from the Renaissance painting.",
+            "description": "It has always been a fascinating idea, how someone like Newton or Gauss could have looked like in real...",
             "tags": [
                 "renaissance",
                 "stylegan",
@@ -39,7 +39,7 @@
             "img_url": "https://cdn-images-1.medium.com/max/1024/1*Rnmiq0-iXeAgZ3TeqOXlCw.jpeg",
             "title": "Fine hyperparameter tuning of my ML learning",
             "url": "https://shivishbrahma.medium.com/fine-hyperparameter-tuning-of-my-ml-learning-7b2c032bc586?source=rss-98a5c8518070------2",
-            "description": "Being an ML enthusiast, it was a great fun to impart some ideas and views from the little I learned in this aspect. On 7th and 8th of March, 2020, the third and fourth workshop of ML Summit Workshop series organized by IEM Innovaci\u00f3n, partnered with IEM Microsoft Student Partners(MSP) and IEM Google Explore ML was held at IEM Gurukul Campus, Salt Lake,\u00a0Kolkata.",
+            "description": "\u201c Tell me and I forget. Teach me and I remember. Involve me and I\u00a0learn.\u201d- Benjamin\u00a0FranklinBeing an...",
             "tags": [
                 "workshop",
                 "data-science",
@@ -47,6 +47,19 @@
                 "machine-learning"
             ],
             "date": "2020-03-27T13:46:09"
+        },
+        {
+            "blog_website": 0,
+            "img_url": "https://media.dev.to/cdn-cgi/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fm52zorn1uiwo74k84rx7.png",
+            "title": "Automate Your Vue Deployment: A Step-by-Step Guide to Using GitHub Actions",
+            "url": "https://dev.to/shivishbrahma/automate-your-vue-deployment-a-step-by-step-guide-to-using-github-actions-44oa",
+            "description": "Deploying a Vue application can be a tedious and error-prone process, especially when done manually....",
+            "tags": [
+                "github",
+                "vue",
+                "deployment"
+            ],
+            "date": "2024-08-01T17:31:43Z"
         },
         {
             "blog_website": 0,
@@ -108,7 +121,7 @@
             "img_url": "https://media.dev.to/cdn-cgi/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Funbzpmp5z1lb1f8pfuld.png",
             "title": "Deploying React App in GitHub Pages",
             "url": "https://dev.to/shivishbrahma/deploying-react-app-in-github-pages-4jfd",
-            "description": "Developing a React App has always been a fascinating experience as a Frontend Developer. To build...",
+            "description": "Developing a React App has always been a fascinating experience as a Frontend Developer. To build exotic...",
             "tags": [
                 "github",
                 "react",
@@ -145,10 +158,10 @@
         },
         {
             "blog_website": 2,
-            "img_url": "http://shivishbrahma.github.io/publog/publog/public/images/0002_cover.webp",
+            "img_url": "http://shivishbrahma.github.io/publog/public/images/0002_cover.webp",
             "title": "Custom WAMMP Setup in Windows (mod_wsgi support)",
-            "url": "http://shivishbrahma.github.io/publog/publog/windows-wammp-setup",
-            "description": "or",
+            "url": "http://shivishbrahma.github.io/publog/windows-wammp-setup",
+            "description": "Are you tired of using pre-packaged WAMPP solutions that limit your control and flexibility? Do you need...",
             "tags": [
                 "windows",
                 "apache",
@@ -158,10 +171,10 @@
         },
         {
             "blog_website": 2,
-            "img_url": "http://shivishbrahma.github.io/publog/publog/public/images/0001_cover_en.webp",
+            "img_url": "http://shivishbrahma.github.io/publog/public/images/0001_cover_en.webp",
             "title": "Introduction To Ruby",
-            "url": "http://shivishbrahma.github.io/publog/publog/introduction-to-ruby",
-            "description": "Ruby Hello World Program",
+            "url": "http://shivishbrahma.github.io/publog/introduction-to-ruby",
+            "description": "Welcome to the world of Ruby, a dynamic and versatile programming language that\u2019s been delighting developers...",
             "tags": [
                 "ruby",
                 "programming"
