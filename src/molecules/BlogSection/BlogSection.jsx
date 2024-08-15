@@ -12,14 +12,15 @@ export default function BlogSection({ ...otherProps }) {
     const [loading, setLoading] = React.useState(false);
 
     React.useEffect(() => {
+        const blogsLimit = 6;
         setLoading(true);
         loadMockup("blogs")
             .then(function (data) {
                 const sortedBlogs = data.blogs.sort((a, b) => {
                     return parseISO(b.date) - parseISO(a.date);
                 });
-                if (sortedBlogs.length > 12) {
-                    setBlogs(sortedBlogs.slice(0, 12));
+                if (sortedBlogs.length > blogsLimit) {
+                    setBlogs(sortedBlogs.slice(0, blogsLimit));
                 } else setBlogs(sortedBlogs);
                 setLoading(false);
             })
