@@ -18,13 +18,13 @@ function Typewriter({
 	const [currentText, setCurrentText] = React.useState('');
 	const [currentIndex, setCurrentIndex] = React.useState(0);
 	const [isTyping, setIsTyping] = React.useState(true);
-	const [__timeout, set__Timeout] = React.useState(null);
+	const [interval, setInterval] = React.useState(null);
 
 	React.useEffect(() => {
 		startTyping();
 
 		return () => {
-			__timeout && clearTimeout(__timeout);
+			interval && clearTimeout(interval);
 		};
 
 		// eslint-disable-next-line react-hooks/exhaustive-deps
@@ -34,10 +34,10 @@ function Typewriter({
 		let rawText = getRawText()[currentIndex];
 		if (isTyping) {
 			if (currentText.length < rawText.length) {
-				set__Timeout(setTimeout(type, speed));
+				setInterval(setTimeout(type, speed));
 			} else {
 				setIsTyping(false);
-				set__Timeout(setTimeout(erase, eraseDelay));
+				setInterval(setTimeout(erase, eraseDelay));
 			}
 		} else {
 			if (currentText.length === 0) {
@@ -50,11 +50,11 @@ function Typewriter({
 					setTimeout(() => setCurrentIndex(index), typingDelay);
 				}
 			} else {
-				set__Timeout(setTimeout(erase, eraseSpeed));
+				setInterval(setTimeout(erase, eraseSpeed));
 			}
 		}
 		return () => {
-			__timeout && clearTimeout(__timeout);
+			interval && clearTimeout(interval);
 		};
 
 		// eslint-disable-next-line react-hooks/exhaustive-deps
@@ -66,7 +66,7 @@ function Typewriter({
 			startTyping();
 		}
 		return () => {
-			__timeout && clearTimeout(__timeout);
+			interval && clearTimeout(interval);
 		};
 
 		// eslint-disable-next-line react-hooks/exhaustive-deps
@@ -77,7 +77,7 @@ function Typewriter({
 	}
 
 	function startTyping() {
-		set__Timeout(
+		setInterval(
 			setTimeout(() => {
 				type();
 			}, speed)
