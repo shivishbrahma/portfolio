@@ -219,9 +219,9 @@
             "endDate": "",
             "summary": "Developed and maintained code for data integration pipelines with database objects creations for viewing quotes of upcoming products releases",
             "highlights": [
-                "Developed **ETL** pipelines for data processing and calculating metrics for *NPI Quote Management*.",
-                "Worked on **Teradata** to **Snowflake** Process Migration.",
-                "Implemented custom *SLA Alerting System* via email and incident.",
+                "Developed **ETL** pipelines for data processing and calculating metrics for *NPI & BAU Quote Management*.",
+                "Worked on **Teradata** to **Snowflake** Process Migration for an exisiting application.",
+                "Implemented custom *SLA Alerting System* via email and incident ticketing. Used **Python** for pipeline processing and **Java** for pulling latest data timestamp from multiple database systems.",
                 "Trained two assistant system engineers and won **Star of the Month Award**."
             ],
             "keywords": [
