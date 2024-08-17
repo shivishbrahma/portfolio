@@ -1,19 +1,19 @@
 name: React app deployment
 
 on:
-    # push:
-    #     branches: ["reactify"]
+    push:
+        branches: ["reactify"]
     # pull_request:
     #     branches: ["reactify"]
-    workflow_run:
-        workflows: ["Update Assets"]
-        branches: ["reactify"]
-        types: [completed]
+    # workflow_run:
+    #     workflows: ["Update Assets"]
+    #     branches: ["reactify"]
+    #     types: [completed]
 
 jobs:
     build:
         runs-on: ubuntu-latest
-        if: ${{ github.event.workflow_run.conclusion == 'success' }}
+        # if: ${{ github.event.workflow_run.conclusion == 'success' }}
         strategy:
             matrix:
                 node-version: [20.x]
