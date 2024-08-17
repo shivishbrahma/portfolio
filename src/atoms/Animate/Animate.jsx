@@ -103,28 +103,8 @@ const animationNames = [
     "slideOutUp"
 ];
 
-const animationIterations = [
-    "infinite",
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9",
-    "10",
-    "11",
-    "12",
-    "13",
-    "14",
-    "15",
-    "16",
-    "17",
-    "18"
-];
-function Animate({ children, element, type, iteration, ...otherProps }) {
+const animationIterations = ["infinite", ...Array.from({ length: 10 }).map((_, i) => i + 1)];
+function Animate({ children, element = "div", type = "bounce", iteration = "infinite", ...otherProps }) {
     // Added animation_names as css
     React.useEffect(() => {
         let styles = "";
@@ -150,12 +130,6 @@ function Animate({ children, element, type, iteration, ...otherProps }) {
         children
     );
 }
-
-Animate.defaultProps = {
-    type: "bounce",
-    element: "div",
-    iteration: "infinite"
-};
 
 Animate.propTypes = {
     type: PropTypes.oneOf(animationNames).isRequired,

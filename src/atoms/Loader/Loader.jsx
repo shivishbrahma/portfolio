@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import "./Loader.scss";
 
-function Loader({ loading, numberOfBalls, ...otherProps }) {
+function Loader({ loading, numberOfBalls = 5, ...otherProps }) {
     if (loading) {
         return (
             <section className="Loader" {...otherProps}>
@@ -34,10 +34,6 @@ function Loader({ loading, numberOfBalls, ...otherProps }) {
 Loader.propTypes = {
     loading: PropTypes.bool.isRequired,
     numberOfBalls: PropTypes.number
-};
-
-Loader.defaultProps = {
-    numberOfBalls: 5
 };
 
 export default Loader;

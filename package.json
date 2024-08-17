@@ -2,29 +2,33 @@
     "name": "portfolio",
     "version": "0.1.1",
     "private": true,
+    "type": "module",
     "dependencies": {
+        "@frank-mayer/react-tag-cloud": "^1.2.1",
         "@testing-library/jest-dom": "^5.16.2",
         "@testing-library/react": "^12.1.3",
         "@testing-library/user-event": "^13.5.0",
+        "@vitejs/plugin-react": "^4.3.1",
         "animate.css": "^4.1.1",
         "date-fns": "^2.28.0",
         "marked": "^11.1.0",
-        "react": "^17.0.2",
-        "react-dom": "^17.0.2",
+        "react": "^18.3.1",
+        "react-dom": "^18.3.1",
         "react-icons": "^4.3.1",
         "react-router-dom": "^6.0.2",
-        "react-scripts": "^5.0.0",
-        "react-to-print": "^2.14.0",
+        "react-to-print": "^2.15.1",
         "react-tooltip": "^4.2.21",
         "sass": "^1.77.8",
         "tinycolor2": "^1.4.2",
         "web-vitals": "^2.1.4"
     },
+    "devDependencies": {
+        "vite": "^5.4.1"
+    },
     "scripts": {
-        "start": "react-scripts start",
-        "build": "react-scripts build",
-        "test": "react-scripts test",
-        "eject": "react-scripts eject"
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview"
     },
     "eslintConfig": {
         "extends": [

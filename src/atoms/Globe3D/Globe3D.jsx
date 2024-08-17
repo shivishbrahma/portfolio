@@ -1,239 +1,318 @@
-import React, { createRef, useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import "./Globe3D.scss";
+import { FaPlay, FaPause } from "react-icons/fa";
+import Button from "../Button/Button";
 
-function sign(a) {
-	return a > 0 ? 1 : a < 0 ? -1 : 0;
-}
+const Globe3DTag = React.forwardRef(
+    (
+        {
+            text,
+            id,
+            weight,
+            alpha,
+            scale,
+            left,
+            top,
+            useItemInlineStyles,
+            useHTML,
+            position,
+            itemClassName,
+            ...otherProps
+        },
+        tagRef
+    ) => {
+        return (
+            <span
+                className={"Globe3D__tag " + itemClassName}
+                style={
+                    useItemInlineStyles
+                        ? {
+                              willChange: "transform, opacity, filter",
+                              position: "absolute",
+                              top: "50%",
+                              left: "50%",
+                              zIndex: id + 1,
+                              filter: `alpha(opacity=${100 * alpha})`,
+                              opacity: alpha,
+                              transformOrigin: "50% 50%",
+                              transform: `translate3d(${left.endsWith("%") ? left : `${left}px`}, ${
+                                  top.endsWith("%") ? top : `${top}px`
+                              }, 0) scale(${scale})`
+                          }
+                        : {}
+                }
+                {...otherProps}
+                ref={tagRef}
+            >
+                {text}
+            </span>
+        );
+    }
+);
 
-function parseColor(text) {
-	let hex = parseInt(text.substr(1), 16);
-	return [Math.floor(hex / 65536), Math.floor((hex / 256) % 256), Math.floor(hex % 256)];
-}
-
-const Globe3DTag = (props) => {
-	const { constants, text, weight, x, y, z } = props;
-
-	const tagRef = createRef();
-
-	// console.log(props);
-
-	// function drawObjs() {
-	const filters = typeof document.body.filters == "object",
-		w = document.body.clientWidth,
-		h = document.body.clientHeight;
-	let color = "currentColor",
-		width = 0,
-		height = 0;
-
-	// 	const newObjs = objs.map(function (o, i) {
-	if (!tagRef) {
-		let c = 1;
-		for (let i in constants.colorMax) {
-			c = c * 256 + Math.floor((constants.colorMax[i] - constants.colorMin[i]) * weight + constants.colorMin[i]);
-		}
-		color = "#" + c.toString(16).substr(1);
-		width = 0;
-		height = 0;
-	}
-
-	const size = constants.fontSize + z * constants.fontShift;
-	const factor = size / constants.fontSize;
-	if (width === 0 && tagRef && tagRef.current) {
-		width = tagRef.current.clientWidth / factor;
-		height = tagRef.current.clientHeight / factor;
-	}
-	const fontSize = Math.round(size),
-		screenX = (w * (x * constants.xScale + 1)) / 2,
-		left = screenX - (width * factor) / 2,
-		screenY = (h * (y * constants.yScale + 1)) / 2,
-		top = screenY - (height * factor) / 2,
-		zIndex = z >= 0 ? 10 : 5;
-
-	console.log(width);
-
-	// 		const opa = (Math.sin((o.z * Math.PI) / 2) / 2 + 0.5) * (1 - opaque) + opaque;
-	// 		if (!filters) o.opacity = opa;
-	// 		return o;
-	// 	});
-
-	// 	setObjs(newObjs);
-	// }
-
-	return (
-		<span
-			className="Globe3D__Tag"
-			ref={tagRef}
-			style={{
-				fontWeight: "bold",
-				position: "absolute",
-				color,
-				fontSize,
-				left,
-				top,
-				zIndex,
-			}}
-		>
-			{text}
-		</span>
-	);
+Globe3DTag.propTypes = {
+    text: PropTypes.string.isRequired,
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    weight: PropTypes.number.isRequired,
+    useItemInlineStyles: PropTypes.bool,
+    itemClassName: PropTypes.string,
+    useHTML: PropTypes.bool,
+    position: PropTypes.shape({ x: PropTypes.number, y: PropTypes.number, z: PropTypes.number }),
+    scale: PropTypes.string,
+    alpha: PropTypes.string,
+    left: PropTypes.string,
+    top: PropTypes.string
 };
 
-Globe3DTag.defaultProps = {};
+Globe3DTag.defaultProps = {
+    useItemInlineStyles: true,
+    itemClassName: "",
+    useHTML: false,
+    position: { x: 0, y: 0, z: 0 },
+    scale: "1",
+    alpha: "1",
+    left: "-50%",
+    top: "-50%"
+};
 
-function Globe3D({
-	tags,
-	callback,
-	fontSize,
-	fontShift,
-	colorMax,
-	colorMin,
-	colorBgr,
-	interval,
-	stepAngle,
-	idleMotion,
-	opaque,
-	nonSense,
-	xScale,
-	yScale,
-	...otherProps
-}) {
-	let w = 0,
-		h = 0;
-	let lastX,
-		lastY,
-		rho = 0,
-		theta = 0,
-		timer = null,
-		containerTop,
-		timing = [1],
-		timingMax = 8,
-		container;
+const Globe3D = ({
+    tags,
+    radius,
+    maximumSpeed,
+    initialSpeed,
+    direction,
+    keep,
+    reverseDirection,
+    useContainerInlineStyles,
+    useItemInlineStyles,
+    useHTML,
+    containerClassName,
+    itemClassName,
+    ...otherProps
+}) => {
+    const globRef = React.useRef();
+    const depth = React.useMemo(() => radius * 2, [radius]);
+    const size = React.useMemo(() => radius * 1.5, [radius]);
+    const initSpeed = React.useMemo(() => ({ slow: 16, normal: 32, fast: 80 }[initialSpeed] || 32), [initialSpeed]);
+    const maxSpeed = React.useMemo(() => ({ slow: 0.5, normal: 1, fast: 2 }[maximumSpeed] || 1), [maximumSpeed]);
+    const mouseX0 = React.useMemo(() => initSpeed * Math.sin((direction * Math.PI) / 180), [direction, initSpeed]);
+    const mouseY0 = React.useMemo(() => initSpeed * Math.cos((direction * Math.PI) / 180), [direction, initSpeed]);
+    const [paused, setPaused] = React.useState(false);
+    const [active, setActive] = React.useState(false);
+    const globTagsRef = React.useRef([]);
+    const [interval, setInterval] = React.useState(null);
+    const [mouseX, setMouseX] = React.useState(mouseX0);
+    const [mouseY, setMouseY] = React.useState(mouseY0);
+    const [globTags, setGlobTags] = React.useState([]);
 
-	const [closest, setClosest] = React.useState(null);
-	const [objs, setObjs] = React.useState([]);
-    const screenRef = React.createRef();
+    function getNextFrame() {
+        if (
+            paused ||
+            globTagsRef.current.length === 0 ||
+            globTagsRef.current.length !== tags.length ||
+            globTags.length === 0 ||
+            !globTags[0].position
+        ) {
+            return;
+        }
 
-	const objsRef = React.useRef([]);
-	if (objsRef.current.length !== tags.length) {
-		objsRef.current = Array(tags.length)
-			.fill()
-			.map((_, i) => objsRef.current[i] || createRef());
-	}
+        // If keep is disabled, pause rolling after moving mouse out area
+        if (!keep && !active) {
+            setMouseX(Math.abs(mouseX - mouseX0) < 1 ? mouseX0 : (mouseX + mouseX0) / 2);
+            setMouseY(Math.abs(mouseY - mouseY0) < 1 ? mouseY0 : (mouseY + mouseY0) / 2);
+        }
 
-	function onMouseMoveEvent(evt) {
-		if (!evt) {
-			evt = window.event;
-		}
-	}
+        let a = -(Math.min(Math.max(-mouseY, -size), size) / radius) * maxSpeed;
+        let b = (Math.min(Math.max(-mouseX, -size), size) / radius) * maxSpeed;
 
-	function onMouseLeaveEvent(evt) {
-		if (!evt) {
-			evt = window.event;
-		}
-		rho = idleMotion;
-		setClosest(null);
-	}
+        // If reverseDirection is enabled, reverse the direction
+        if (reverseDirection) {
+            a = -a;
+            b = -b;
+        }
 
-	React.useEffect(() => {
-		spin((Math.random() * 2 - 1) * Math.PI);
-		step((Math.random() * 2 - 1) * Math.PI);
-		spin((Math.random() * 2 - 1) * Math.PI);
-	}, []);
+        // If paused
+        if (Math.abs(a) <= 0.01 && Math.abs(b) <= 0.01) {
+            return;
+        }
 
-	function spin(obj, angle) {
-		const { x, y } = obj;
-		const newX = x * Math.cos(angle) - y * Math.sin(angle),
-			newY = x * Math.sin(angle) + y * Math.cos(angle);
-		return {
-			...obj,
-			x: newX,
-			y: newY,
-		};
-	}
+        // Calculate the offset
+        const l = Math.PI / 180;
+        const sc = [Math.sin(a * l), Math.cos(a * l), Math.sin(b * l), Math.cos(a * l)];
 
-	function step(obj, angle) {
-		const { x, z } = obj;
-		const newX = x * Math.cos(angle) - z * Math.sin(angle),
-			newZ = x * Math.sin(angle) + z * Math.cos(angle);
-		return {
-			...obj,
-			x: newX,
-			z: newZ,
-		};
-	}
+        const newGlobTags = globTags.map((tag, index) => {
+            const rx1 = tag.position.x;
+            const ry1 = tag.position.y * sc[1] - tag.position.z * sc[0];
+            const rz1 = tag.position.y * sc[0] + tag.position.z * sc[1];
 
-	function setupElements(elems) {
-		const newObjs = [];
-		for (let eli in elems) {
-			const c = {};
-			c.text = elems[eli].text;
-			c.id = elems[eli].id;
-			c.weight = elems[eli].weight;
-			c.x = 1;
-			c.y = 0;
-			c.z = 0;
-			spin(c, (Math.random() * 2 - 1) * Math.PI);
-			step(c, (Math.random() * 2 - 1) * Math.PI);
-			spin(c, (Math.random() * 2 - 1) * Math.PI);
-			newObjs.push(c);
-		}
-		setObjs(newObjs);
-	}
+            const rx2 = rx1 * sc[3] + ry1 * sc[2];
+            const ry2 = ry1;
+            const rz2 = rz1 * sc[3] - rx1 * sc[2];
 
-	useEffect(() => {
-		setupElements(tags);
-		return () => {};
-	}, [tags]);
+            const per = (2 * depth) / (2 * depth + rz2); // TODO
 
-	useEffect(() => {});
+            let alpha = per * per - 0.25;
+            alpha = (alpha > 1 ? 1 : alpha).toFixed(3);
 
-	return (
-		<div className="Globe3D" ref={screenRef}>
-			<div
-				className="Globe3D__container"
-				style={{
-					backgroundColor: colorBgr,
-				}}
-			>
-				{objs.map((tag, i) => {
-					const constants = {
-						fontSize,
-						fontShift,
-						colorMax,
-						colorMin,
-						xScale,
-						yScale,
-					};
-					return <Globe3DTag key={i} constants={constants} {...tag} />;
-				})}
-			</div>
-		</div>
-	);
-}
+            const left = (rx2 - globTagsRef.current[index].offsetWidth / 2).toFixed(2);
+            const top = (ry2 - globTagsRef.current[index].offsetHeight / 2).toFixed(2);
+
+            return {
+                ...tag,
+                position: {
+                    x: rx2,
+                    y: ry2,
+                    z: rz2
+                },
+                scale: per.toFixed(3),
+                alpha,
+                left,
+                top
+            };
+        });
+
+        setGlobTags(newGlobTags);
+    }
+
+    function computePosition(index, random = false) {
+        const tagsLength = tags.length;
+        if (random) {
+            index = Math.floor(Math.random() * (tagsLength + 1));
+        }
+        const phi = Math.acos(-1 + (2 * index) / tagsLength);
+        const theta = Math.sqrt(tagsLength * Math.PI) * phi;
+        return {
+            x: (size * Math.cos(theta) * Math.sin(phi)) / 2,
+            y: (size * Math.cos(theta) * Math.cos(phi)) / 2,
+            z: (size * Math.sin(phi)) / 2
+        };
+    }
+
+    function handlePause(evt) {
+        evt.preventDefault();
+        setPaused(!paused);
+    }
+
+    React.useEffect(() => {
+        setGlobTags(tags.map((tag, index) => ({ ...tag, position: computePosition(index) })));
+
+        const isTouchDevice = "ontouchstart" in window;
+        if (!isTouchDevice && globRef.current) {
+            globRef.current.addEventListener("mouseover", (e) => {
+                setActive(true);
+            });
+
+            globRef.current.addEventListener("mouseout", (e) => {
+                setActive(false);
+            });
+
+            // TODO: Use of keep
+            globRef.current.addEventListener("mousemove", (e) => {
+                const rect = globRef.current.getBoundingClientRect();
+                setMouseX((e.clientX - (rect.left + rect.width / 2)) / 5);
+                setMouseY((e.clientY - (rect.top + rect.height / 2)) / 5);
+            });
+        }
+
+        // getNextFrame();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    React.useEffect(() => {
+        setInterval(
+            setTimeout(() => {
+                getNextFrame();
+            }, 10)
+        );
+
+        return () => {
+            interval && clearTimeout(interval);
+        };
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [globTags]);
+
+    React.useEffect(() => {
+        setGlobTags(tags.map((tag, index) => ({ ...tag, position: computePosition(index + 1) })));
+    }, [tags]);
+
+    return (
+        <div className="Globe3D">
+            <div
+                className={"Globe3D__container " + containerClassName}
+                style={
+                    useContainerInlineStyles
+                        ? {
+                              position: "relative",
+                              width: `${2 * radius}px`,
+                              height: `${2 * radius}px`
+                          }
+                        : {}
+                }
+                ref={globRef}
+            >
+                {globTags.map((globTag, i) => {
+                    return (
+                        <Globe3DTag
+                            key={i}
+                            itemClassName={itemClassName}
+                            useHTML={useHTML}
+                            useItemInlineStyles={useItemInlineStyles}
+                            {...globTag}
+                            id={i + 1}
+                            ref={(ref) => (globTagsRef.current[i] = ref)}
+                        />
+                    );
+                })}
+            </div>
+
+            <div className="Globe3D__actions">
+                <Button
+                    className="Globe3D__action"
+                    theme="secondary"
+                    onClick={(evt) => handlePause(evt)}
+                    title={paused ? "Resume" : "Pause"}
+                >
+                    {paused ? <FaPause size={12} /> : <FaPlay size={12} />}
+                </Button>
+            </div>
+        </div>
+    );
+};
 
 Globe3D.propTypes = {
-	callback: PropTypes.func,
-	fontSize: PropTypes.number,
-	fontShift: PropTypes.number,
+    tags: PropTypes.arrayOf(
+        PropTypes.shape({
+            text: PropTypes.string,
+            weight: PropTypes.number
+        })
+    ).isRequired,
+    radius: PropTypes.number,
+    maximumSpeed: PropTypes.oneOf(["normal", "slow", "fast"]),
+    initialSpeed: PropTypes.oneOf(["normal", "slow", "fast"]),
+    direction: PropTypes.number,
+    keep: PropTypes.bool,
+    reverseDirection: PropTypes.bool,
+    useContainerInlineStyles: PropTypes.bool,
+    useItemInlineStyles: PropTypes.bool,
+    useHTML: PropTypes.bool,
+    containerClassName: PropTypes.string,
+    itemClassName: PropTypes.string
 };
 
 Globe3D.defaultProps = {
-	callback: function (id) {
-		alert(id);
-	},
-	fontSize: 14,
-	fontShift: 7,
-	colorMax: parseColor("#000000"),
-	colorMin: parseColor("#C0C0C0"),
-	colorBgr: "transparent",
-	interval: 50,
-	stepAngle: 0.08722,
-	idleMotion: 0.2,
-	opaque: 0.4,
-	nonSense: 0.025,
-	xScale: 0.9,
-	yScale: 0.9,
+    radius: 100,
+    maximumSpeed: "normal",
+    initialSpeed: "normal",
+    direction: 90,
+    keep: true,
+    reverseDirection: false,
+    useContainerInlineStyles: true,
+    useItemInlineStyles: true,
+    useHTML: false,
+    containerClassName: "",
+    itemClassName: ""
 };
 
 export default Globe3D;

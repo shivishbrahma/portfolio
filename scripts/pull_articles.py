@@ -5,10 +5,24 @@ import logging
 from xml.dom.minidom import parseString
 from bs4 import BeautifulSoup
 import datetime
+import string
 
 logging.getLogger().setLevel(logging.INFO)
 logging.basicConfig(level=logging.INFO)
 
+def generate_description(body) -> str:
+        """
+        Convert html into simple text and return first 100 characters such that last word is complete
+        """
+        soup = BeautifulSoup(body)
+        html_text = soup.get_text().replace("\n", " ")
+        if len(html_text) > 100:
+            i = 100
+            while i > len(html_text) or html_text[i] not in string.whitespace:
+                i += 1
+            html_text = html_text[:i] + "..."
+
+        return html_text
 
 def get_dev_articles():
     articles = []
@@ -45,7 +59,7 @@ def get_medium_articles():
         _content = item.getElementsByTagName("content:encoded")[0].firstChild.nodeValue
         _doc_content = BeautifulSoup(_content, "html.parser")
         _img_url = _doc_content.select_one("img").attrs["src"]
-        _description = _doc_content.select_one("p").text
+        _description = generate_description(_content)
         for category in item.getElementsByTagName("category"):
             _categories.append(category.firstChild.data)
         _date = datetime.datetime.strptime(
@@ -79,8 +93,7 @@ def get_publog_articles():
     for item in doc.getElementsByTagName("entry"):
         _categories = []
         _content = item.getElementsByTagName("content")[0].firstChild.nodeValue
-        _doc_content = BeautifulSoup(_content, "lxml")
-        _description = _doc_content.select_one("p").text
+        _description = generate_description(_content)
         _date = datetime.datetime.strptime(
             item.getElementsByTagName("published")[0].firstChild.data,
             "%Y-%m-%dT%H:%M:%S%z",

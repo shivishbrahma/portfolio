@@ -1,9 +1,10 @@
 import React from 'react';
 
-import { loadMockup } from '../../services/fetchService';
-import Card from '../../atoms/Card/Card';
-import Loader from "../../atoms/Loader/Loader";
-import Netstats from '../../tools/Netstats/Netstats';
+import { loadMockup } from '@/services/fetchService';
+import Card from '@/atoms/Card/Card';
+import Loader from "@/atoms/Loader/Loader";
+import Netstats from '@/tools/Netstats/Netstats';
+
 import './Tools.scss';
 
 export default function Tools(props) {

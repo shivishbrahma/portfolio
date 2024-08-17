@@ -1,25 +1,27 @@
-import React from "react";
-import Card from "../../atoms/Card/Card";
-import PageSection from "../../atoms/PageSection/PageSection";
-import { loadMockup } from "../../services/fetchService";
 import { parseISO } from "date-fns";
+import React from "react";
+
+import Card from "@/atoms/Card/Card";
+import PageSection from "@/atoms/PageSection/PageSection";
+import { loadMockup } from "@/services/fetchService";
+import Loader from "@/atoms/Loader/Loader";
 
 import "./BlogSection.scss";
-import Loader from "../../atoms/Loader/Loader";
 
 export default function BlogSection({ ...otherProps }) {
     const [blogs, setBlogs] = React.useState([]);
     const [loading, setLoading] = React.useState(false);
 
     React.useEffect(() => {
+        const blogsLimit = 6;
         setLoading(true);
         loadMockup("blogs")
             .then(function (data) {
                 const sortedBlogs = data.blogs.sort((a, b) => {
                     return parseISO(b.date) - parseISO(a.date);
                 });
-                if (sortedBlogs.length > 12) {
-                    setBlogs(sortedBlogs.slice(0, 12));
+                if (sortedBlogs.length > blogsLimit) {
+                    setBlogs(sortedBlogs.slice(0, blogsLimit));
                 } else setBlogs(sortedBlogs);
                 setLoading(false);
             })

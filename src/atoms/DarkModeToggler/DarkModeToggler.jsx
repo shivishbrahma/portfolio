@@ -1,9 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { IoMdSunny, IoIosMoon } from "react-icons/io";
+
 import "./DarkModeToggler.scss";
 
-function DarkModeToggler({ darkModeToggler, isDark, ...otherProps }) {
+function DarkModeToggler({ darkModeToggler, isDark = false, ...otherProps }) {
     const [toggleIcon, setToggleIcon] = React.useState(isDark ? <IoIosMoon /> : <IoMdSunny />);
 
     React.useEffect(() => {
@@ -22,6 +23,7 @@ function DarkModeToggler({ darkModeToggler, isDark, ...otherProps }) {
                 darkModeToggler();
             }}
             title="Dark Mode Toggler"
+            {...otherProps}
         >
             <span className="icon">{toggleIcon}</span>
         </div>
@@ -30,11 +32,7 @@ function DarkModeToggler({ darkModeToggler, isDark, ...otherProps }) {
 
 DarkModeToggler.propTypes = {
     darkModeToggler: PropTypes.func.isRequired,
-    isDark: PropTypes.bool.isRequired
-};
-
-DarkModeToggler.defaultProps = {
-    isDark: false
+    isDark: PropTypes.bool
 };
 
 export default DarkModeToggler;

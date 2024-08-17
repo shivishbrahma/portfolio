@@ -1,7 +1,9 @@
 import React from "react";
-import GithubCalendar from "../../atoms/GithubCalendar/GithubCalendar";
-import { createCalendarTheme } from "../../atoms/GithubCalendar/util";
-import PageSection from "../../atoms/PageSection/PageSection";
+
+import GithubCalendar from "@/atoms/GithubCalendar/GithubCalendar";
+import { createCalendarTheme } from "@/atoms/GithubCalendar/util";
+import PageSection from "@/atoms/PageSection/PageSection";
+
 import "./GithubSection.scss";
 
 function GithubSection(props) {

@@ -60,6 +60,30 @@
         }
     }
 
+    &.Button__light {
+        background-color: var(--baseBg);
+        border-color: var(--baseBg);
+        color: var(--base);
+
+        &:hover {
+            background-color: var(--base);
+            border-color: var(--base);
+            color: var(--baseBg);
+        }
+    }
+
+    &.Button__dark {
+        background-color: var(--base);
+        border-color: var(--base);
+        color: var(--baseBg);
+
+        &:hover {
+            background-color: var(--baseBg);
+            border-color: var(--baseBg);
+            color: var(--base);
+        }
+    }
+
     &.Button__floating {
         position: fixed;
 
