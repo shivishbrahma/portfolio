@@ -22,18 +22,6 @@ const Globe3DTag = React.forwardRef(
         },
         tagRef
     ) => {
-        // const tagRef = React.useRef();
-
-        // React.useEffect(() => {
-        //     if (tagRef.current) {
-        //         if (useHTML) {
-        //             tagRef.current.innerHTML = text;
-        //         } else {
-        //             tagRef.current.textContent = text;
-        //         }
-        //     }
-        // }, []);
-
         return (
             <span
                 className={"Globe3D__tag " + itemClassName}
@@ -48,7 +36,6 @@ const Globe3DTag = React.forwardRef(
                               filter: `alpha(opacity=${100 * alpha})`,
                               opacity: alpha,
                               transformOrigin: "50% 50%",
-                              //   transform: "translate3d(-50%, -50%, 0) scale(1)"
                               transform: `translate3d(${left.endsWith("%") ? left : `${left}px`}, ${
                                   top.endsWith("%") ? top : `${top}px`
                               }, 0) scale(${scale})`
@@ -66,7 +53,7 @@ const Globe3DTag = React.forwardRef(
 
 Globe3DTag.propTypes = {
     text: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired,
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
     weight: PropTypes.number.isRequired,
     useItemInlineStyles: PropTypes.bool,
     itemClassName: PropTypes.string,
@@ -117,39 +104,16 @@ const Globe3D = ({
     const [interval, setInterval] = React.useState(null);
     const [mouseX, setMouseX] = React.useState(mouseX0);
     const [mouseY, setMouseY] = React.useState(mouseY0);
-    const [globTags, setGlobTags] = React.useState(
-        tags.map((tag, index) => {
-            return { ...tag, position: computePosition(index) };
-        })
-    );
+    const [globTags, setGlobTags] = React.useState([]);
 
-    // direction, maxSpeed, initSpeed, keep
-
-    function getNextInterval(func, delay) {
-        const requestAnimFrame = (
-            (() => window.requestAnimationFrame) ||
-            ((callback, element) => {
-                return setTimeout(callback, 1000 / 60);
-            })
-        )();
-        let start = new Date().getTime();
-        const handle = {};
-        function loop() {
-            handle.value = requestAnimFrame(loop);
-            const current = new Date().getTime(),
-                delta = current - start;
-            if (delta >= delay) {
-                func.call();
-                start = new Date().getTime();
-            }
-        }
-
-        handle.value = requestAnimFrame(loop);
-        return handle;
-    }
-
-    function nextFrame() {
-        if (paused) {
+    function getNextFrame() {
+        if (
+            paused ||
+            globTagsRef.current.length === 0 ||
+            globTagsRef.current.length !== tags.length ||
+            globTags.length === 0 ||
+            !globTags[0].position
+        ) {
             return;
         }
 
@@ -194,13 +158,6 @@ const Globe3D = ({
             const left = (rx2 - globTagsRef.current[index].offsetWidth / 2).toFixed(2);
             const top = (ry2 - globTagsRef.current[index].offsetHeight / 2).toFixed(2);
 
-            // if (index === 0) {
-            //     console.log({
-            //         x: rx2,
-            //         y: ry2,
-            //         z: rz2
-            //     });
-            // }
             return {
                 ...tag,
                 position: {
@@ -238,10 +195,10 @@ const Globe3D = ({
     }
 
     React.useEffect(() => {
+        setGlobTags(tags.map((tag, index) => ({ ...tag, position: computePosition(index) })));
+
         const isTouchDevice = "ontouchstart" in window;
         if (!isTouchDevice && globRef.current) {
-            console.log("not touch", globRef.current);
-            
             globRef.current.addEventListener("mouseover", (e) => {
                 setActive(true);
             });
@@ -258,16 +215,27 @@ const Globe3D = ({
             });
         }
 
-        nextFrame();
+        // getNextFrame();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    React.useEffect(() => {
         setInterval(
-            getNextInterval(() => {
-                nextFrame();
+            setTimeout(() => {
+                getNextFrame();
             }, 10)
         );
+
         return () => {
             interval && clearTimeout(interval);
         };
-    }, []);
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [globTags]);
+
+    React.useEffect(() => {
+        setGlobTags(tags.map((tag, index) => ({ ...tag, position: computePosition(index + 1) })));
+    }, [tags]);
 
     return (
         <div className="Globe3D">
@@ -287,11 +255,12 @@ const Globe3D = ({
                 {globTags.map((globTag, i) => {
                     return (
                         <Globe3DTag
-                            key={globTag.id}
+                            key={i}
                             itemClassName={itemClassName}
                             useHTML={useHTML}
                             useItemInlineStyles={useItemInlineStyles}
                             {...globTag}
+                            id={i + 1}
                             ref={(ref) => (globTagsRef.current[i] = ref)}
                         />
                     );
@@ -316,7 +285,6 @@ Globe3D.propTypes = {
     tags: PropTypes.arrayOf(
         PropTypes.shape({
             text: PropTypes.string,
-            id: PropTypes.string,
             weight: PropTypes.number
         })
     ).isRequired,
@@ -337,7 +305,7 @@ Globe3D.defaultProps = {
     radius: 100,
     maximumSpeed: "normal",
     initialSpeed: "normal",
-    direction: 135,
+    direction: 90,
     keep: true,
     reverseDirection: false,
     useContainerInlineStyles: true,
