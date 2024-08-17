@@ -1,8 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
+
 import "./Button.scss";
 
-function Button({ className, children, floating, floatingLocation, theme, type, ...otherProps }) {
+function Button({
+    className,
+    children,
+    floating = false,
+    floatingLocation = "bottom_right",
+    theme = "default",
+    type = "button",
+    ...otherProps
+}) {
     const buttonThemeClass = " Button__" + (theme ? theme : "primary"),
         floatingLocationClass = " Button__floating__" + (floatingLocation ? floatingLocation : "left");
     if (type === "link") {
@@ -52,13 +61,6 @@ Button.propTypes = {
         "dark"
     ]),
     floatingLocation: PropTypes.string
-};
-
-Button.defaultProps = {
-    type: "button",
-    floating: false,
-    theme: "default",
-    floatingLocation: "bottom_right"
 };
 
 export default Button;

@@ -1,28 +1,20 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-function Cursor(props) {
-	const { cursor, cursorRenderer, className } = props;
-
-	return (
-		<React.Fragment>
-			<span className={className + ' Typewriter__cursor'}>
-				{cursorRenderer ? cursorRenderer(cursor) : cursor}
-			</span>
-		</React.Fragment>
-	);
+function Cursor({ cursor = "|", cursorRenderer = null, cursorClassName = "", ...otherProps }) {
+    return (
+        <React.Fragment>
+            <span className={cursorClassName + " Typewriter__cursor"} {...otherProps}>
+                {cursorRenderer ? cursorRenderer(cursor) : cursor}
+            </span>
+        </React.Fragment>
+    );
 }
 
 Cursor.propTypes = {
-	cursor: PropTypes.string,
-	className: PropTypes.string,
-	cursorRenderer: PropTypes.func,
-};
-
-Cursor.defaultProps = {
-	cursor: '|',
-	className: '',
-	cursorRenderer: null,
+    cursor: PropTypes.string,
+    cursorClassName: PropTypes.string,
+    cursorRenderer: PropTypes.func
 };
 
 export default Cursor;

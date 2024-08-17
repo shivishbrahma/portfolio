@@ -2,9 +2,10 @@ import React from "react";
 
 import { FaBars, FaHome, FaTimes, FaTools, FaBlog } from "react-icons/fa";
 import { IoIosDocument } from "react-icons/io";
-import logo from "./logo.png";
-import logo_text from "./logo_text.svg";
-import Navlink from "../../atoms/Navlink/Navlink";
+import logo from "@/molecules/Navbar/logo.png";
+import logo_text from "@/molecules/Navbar/logo_text.svg";
+import Navlink from "@/atoms/Navlink/Navlink";
+
 import "./Navbar.scss";
 
 function Navbar(props) {
@@ -37,6 +38,7 @@ function Navbar(props) {
                 (isFixed && window.innerWidth <= 428 ? " Navbar-fixed" : "") +
                 (isNavbarOpen ? " active" : "")
             }
+            {...props}
         >
             <div
                 role="button"
@@ -90,9 +92,5 @@ function Navbar(props) {
         </nav>
     );
 }
-
-Navbar.propTypes = {};
-
-Navbar.defaultProps = {};
 
 export default Navbar;

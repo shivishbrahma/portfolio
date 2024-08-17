@@ -1,11 +1,13 @@
 import React from "react";
+import PropTypes from "prop-types";
 import ReactTooltip from "react-tooltip";
+
 import Calendar from "./ActivityCalendar";
 // import { Skeleton as CalendarSkeleton } from "./ActivityCalendar"
-import { getContributionData } from "../../services/fetchService";
-// import PropTypes from 'prop-types';
+import { getContributionData } from "@/services/fetchService";
+import Loader from "@/atoms/Loader/Loader";
+
 import "./GithubCalendar.scss";
-import Loader from "../Loader/Loader";
 
 const DEFAULT_THEME = {
     level4: "#216e39",
@@ -15,7 +17,7 @@ const DEFAULT_THEME = {
     level0: "#ebedf0"
 };
 
-function GithubCalendar({ username, year, theme, showTooltip, ...calendarProps }) {
+function GithubCalendar({ username, year = "last", theme = DEFAULT_THEME, showTooltip = true, ...calendarProps }) {
     const [data, setData] = React.useState(null);
     const [loading, setLoading] = React.useState(false);
     const [error, setError] = React.useState(null);
@@ -53,11 +55,11 @@ function GithubCalendar({ username, year, theme, showTooltip, ...calendarProps }
     );
 }
 
-GithubCalendar.propTypes = {};
-
-GithubCalendar.defaultProps = {
-    year: "last",
-    theme: DEFAULT_THEME
+GithubCalendar.propTypes = {
+    username: PropTypes.string.isRequired,
+    year: PropTypes.string,
+    theme: PropTypes.object,
+    showTooltip: PropTypes.bool
 };
 
 export default GithubCalendar;

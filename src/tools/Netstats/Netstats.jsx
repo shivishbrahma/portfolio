@@ -1,7 +1,19 @@
 import React from 'react';
-import './Netstats.scss';
+
+import chromeIcon from '@/images/icons/chrome.svg';
+import edgeIcon from '@/images/icons/edge.svg';
+import safariIcon from '@/images/icons/safari.svg';
+import ieIcon from '@/images/icons/ie.svg';
+import firefoxIcon from '@/images/icons/firefox.png';
+import operaIcon from '@/images/icons/opera.svg';
+import macIcon from '@/images/icons/mac.svg';
+import androidIcon from '@/images/icons/android.png';
+import iosIcon from '@/images/icons/ios.svg';
+import windowsIcon from '@/images/icons/windows.png';
+import linuxIcon from '@/images/icons/linux.png';
+
 import {
-	getAndroidVersion,
+    getAndroidVersion,
 	getBrowser,
 	getDeviceInfo,
 	getIosVersion,
@@ -9,20 +21,9 @@ import {
 	getOs,
 	getStatusInfo,
 } from './utils';
+import Button from '@/atoms/Button/Button';
 
-import chromeIcon from '../../images/icons/chrome.svg';
-import edgeIcon from '../../images/icons/edge.svg';
-import safariIcon from '../../images/icons/safari.svg';
-import ieIcon from '../../images/icons/ie.svg';
-import firefoxIcon from '../../images/icons/firefox.png';
-import operaIcon from '../../images/icons/opera.svg';
-
-import macIcon from '../../images/icons/mac.svg';
-import androidIcon from '../../images/icons/android.png';
-import iosIcon from '../../images/icons/ios.svg';
-import windowsIcon from '../../images/icons/windows.png';
-import linuxIcon from '../../images/icons/linux.png';
-import Button from '../../atoms/Button/Button';
+import './Netstats.scss';
 
 export default function Netstats() {
 	const [location, setLocation] = React.useState(null);

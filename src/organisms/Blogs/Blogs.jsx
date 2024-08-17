@@ -1,9 +1,10 @@
 import { parseISO } from "date-fns";
 import React from "react";
 
-import Loader from "../../atoms/Loader/Loader";
-import Card from "../../atoms/Card/Card";
-import { loadMockup } from "../../services/fetchService";
+import Loader from "@/atoms/Loader/Loader";
+import Card from "@/atoms/Card/Card";
+import { loadMockup } from "@/services/fetchService";
+
 import "./Blogs.scss";
 
 export default function Blogs() {

@@ -22,23 +22,23 @@ import {
 
 function ActivityCalendar({
     data,
-    blockMargin,
-    blockRadius,
-    blockSize,
     children,
-    color,
-    dateFormat,
-    eventHandlers,
-    fontSize,
-    hideColorLegend,
-    hideMonthLabels,
-    hideTotalCount,
-    labels: labelsProp,
-    loading,
-    showWeekdayLabels,
-    style,
     theme: themeProp,
-    weekStart
+    labels: labelsProp,
+    blockMargin = 4,
+    blockRadius = 2,
+    blockSize = 12,
+    color = undefined,
+    dateFormat = "MMM d, yyyy",
+    eventHandlers = {},
+    fontSize = 14,
+    hideColorLegend = false,
+    hideMonthLabels = false,
+    hideTotalCount = false,
+    loading = false,
+    showWeekdayLabels = false,
+    style = {},
+    weekStart = 0
 }) {
     if (loading) data = generateEmptyData();
 
@@ -262,23 +262,6 @@ ActivityCalendar.propTypes = {
         level4: PropTypes.string,
         level5: PropTypes.string
     })
-};
-
-ActivityCalendar.defaultProps = {
-    blockMargin: 4,
-    blockRadius: 2,
-    blockSize: 12,
-    color: undefined,
-    dateFormat: "MMM do, yyyy",
-    eventHandlers: {},
-    fontSize: 14,
-    hideColorLegend: false,
-    hideMonthLabels: false,
-    hideTotalCount: false,
-    loading: false,
-    showWeekdayLabels: false,
-    style: {},
-    weekStart: 0
 };
 
 export const Skeleton = (props) => <ActivityCalendar data={[]} {...props} />;

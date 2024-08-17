@@ -9,10 +9,10 @@ function Typewriter({
     cursorClassName,
     cursorRenderer,
     displayTextRenderer,
-    speed,
-    eraseSpeed,
-    typingDelay,
-    eraseDelay,
+    speed = 200,
+    eraseSpeed = 200,
+    typingDelay = 2500,
+    eraseDelay = 5000,
     ...otherProps
 }) {
     const [currentText, setCurrentText] = React.useState("");
@@ -116,22 +116,15 @@ function Typewriter({
 }
 
 Typewriter.propTypes = {
-    speed: PropTypes.number.isRequired,
-    eraseSpeed: PropTypes.number.isRequired,
-    typingDelay: PropTypes.number.isRequired,
-    eraseDelay: PropTypes.number.isRequired,
+    speed: PropTypes.number,
+    eraseSpeed: PropTypes.number,
+    typingDelay: PropTypes.number,
+    eraseDelay: PropTypes.number,
     cursorClassName: PropTypes.string,
     cursor: PropTypes.string,
     text: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.string), PropTypes.string]).isRequired,
     cursorRenderer: PropTypes.func,
     displayTextRenderer: PropTypes.func
-};
-
-Typewriter.defaultProps = {
-    speed: 200,
-    eraseSpeed: 200,
-    typingDelay: 2500,
-    eraseDelay: 5000
 };
 
 export default Typewriter;
