@@ -27,7 +27,7 @@ function App() {
 
 	return (
 		<ThemeSelectorContext.Provider value={{ theme: themes[theme] }}>
-			<Router basename={process.env.PUBLIC_URL}>
+			<Router basename={import.meta.env.BASE_URL}>
 				<div className="App">
 					<header className="App-header">
 						{/* <img src={logo} className="App-logo" alt="logo" /> */}
