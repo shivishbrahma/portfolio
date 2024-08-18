@@ -1,0 +1,9 @@
+.TagCloud__container {
+    .TagCloud__item {
+        padding: 0.5rem 0.75rem;
+        &:hover {
+            font-weight: 700;
+            border: 1px solid var(--base);
+        }
+    }
+}

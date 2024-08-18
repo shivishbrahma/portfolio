@@ -34,6 +34,8 @@ $color-subheadings: #333;
     // Name Command
     header {
         text-align: center;
+        padding-bottom: 0.75vw;
+        border-bottom: 0.04vw solid $color-primary;
 
         .Resume-title {
             font-size: 3.5vw;
@@ -62,9 +64,6 @@ $color-subheadings: #333;
                 content: "";
             }
         }
-
-        padding-bottom: 0.75vw;
-        border-bottom: 0.04vw solid $color-primary;
     }
 
     main {
@@ -102,12 +101,13 @@ $color-subheadings: #333;
 
     .links {
         .Resume-section-subtitle {
+            text-transform: unset !important;
+            font-weight: 300 !important;
+
             &::after {
                 content: ":// ";
                 padding-left: 0;
             }
-            text-transform: unset !important;
-            font-weight: 300 !important;
         }
 
         .twitter::before {
@@ -116,6 +116,7 @@ $color-subheadings: #333;
     }
 
     .Resume-section {
+        padding-bottom: 0.75vw;
         // Headings command
         .Resume-section-title {
             font-family: "Lato", sans-serif;
@@ -173,8 +174,6 @@ $color-subheadings: #333;
                 font-size: 0.975vw;
             }
         }
-
-        padding-bottom: 0.75vw;
     }
 }
 
@@ -197,6 +196,9 @@ $color-subheadings: #333;
         }
 
         header {
+            padding-bottom: 0.75rem;
+            border-bottom: 0.04rem solid $color-primary;
+
             .Resume-title {
                 font-size: 3.5rem;
             }
@@ -204,9 +206,6 @@ $color-subheadings: #333;
             .Resume-title-content {
                 font-size: 1.125rem;
             }
-
-            padding-bottom: 0.75rem;
-            border-bottom: 0.04rem solid $color-primary;
         }
 
         main {
@@ -227,6 +226,8 @@ $color-subheadings: #333;
         }
 
         .Resume-section {
+            padding-bottom: 0.75rem;
+
             // Section Heading
             .Resume-section-title {
                 font-size: 1.75rem;
@@ -256,8 +257,6 @@ $color-subheadings: #333;
                     font-size: 0.975rem;
                 }
             }
-
-            padding-bottom: 0.75rem;
         }
     }
 }
