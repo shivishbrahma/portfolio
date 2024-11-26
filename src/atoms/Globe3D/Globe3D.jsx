@@ -78,17 +78,17 @@ Globe3DTag.defaultProps = {
 
 const Globe3D = ({
     tags,
-    radius,
-    maximumSpeed,
-    initialSpeed,
-    direction,
-    keep,
-    reverseDirection,
-    useContainerInlineStyles,
-    useItemInlineStyles,
-    useHTML,
-    containerClassName,
-    itemClassName,
+    radius = 100,
+    maximumSpeed = "normal",
+    initialSpeed = "normal",
+    direction = 90,
+    keep = true,
+    reverseDirection = false,
+    useContainerInlineStyles = true,
+    useItemInlineStyles = true,
+    useHTML = false,
+    containerClassName = "",
+    itemClassName = "",
     ...otherProps
 }) => {
     const globRef = React.useRef();
@@ -300,19 +300,4 @@ Globe3D.propTypes = {
     containerClassName: PropTypes.string,
     itemClassName: PropTypes.string
 };
-
-Globe3D.defaultProps = {
-    radius: 100,
-    maximumSpeed: "normal",
-    initialSpeed: "normal",
-    direction: 90,
-    keep: true,
-    reverseDirection: false,
-    useContainerInlineStyles: true,
-    useItemInlineStyles: true,
-    useHTML: false,
-    containerClassName: "",
-    itemClassName: ""
-};
-
 export default Globe3D;

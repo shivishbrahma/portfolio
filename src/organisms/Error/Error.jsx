@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Error.scss';
 
-function Error({ type, message, ...otherProps }) {
+function Error({ type = '404', message = 'Page not found', ...otherProps }) {
 	return (
 		<section className="Error">
 			<h1>{type}</h1>
@@ -16,11 +16,6 @@ function Error({ type, message, ...otherProps }) {
 Error.propTypes = {
 	type: PropTypes.string,
     message: PropTypes.string,
-};
-
-Error.defaultProps = {
-    type: '404',
-    message: 'Page not found',
 };
 
 export default Error;

@@ -219,15 +219,27 @@
             "endDate": "",
             "summary": "Developed and maintained code for data integration pipelines with database objects creations for viewing quotes of upcoming products releases",
             "highlights": [
-                "Developed **ETL** pipelines for data processing and calculating metrics for *NPI & BAU Quote Management*.",
-                "Worked on **Teradata** to **Snowflake** Process Migration for an exisiting application.",
-                "Implemented custom *SLA Alerting System* via email and incident ticketing. Used **Python** for pipeline processing and **Java** for pulling latest data timestamp from multiple database systems.",
+                "**Delivery Quote Management**",
+                [
+                    "Worked in a Teradata Database Procedures to Snowflake Airflow Python Procedure Migration for a BAU application",
+                    "Created ETL pipelines for calculating real-time metrics related to bookings",
+                    "Implemented an event based approach for Singlestore to Snowflake Batch replication"
+                ],
+                "**Data Freshness Alerting System**",
+                [
+                    "Storing SLA & database object details in Singlestore",
+                    "Every Loader or Semantic Refresh job triggered Airflow Python Job to store the event details mainly object details in Singlestore and call Java Spring API.",
+                    "Java Spring API processes the event from database(Singlestore/Snowflake), i.e., pulls the latest refresh timestamp and stores into a separate database object.",
+                    "Implemented an SLA Alerting via email and Help Central ticket and used Airflow Python for scheduled check with smtp library for email and HCL REST API for creating tickets."
+                ],
                 "Trained two assistant system engineers and won **Star of the Month Award**."
             ],
             "keywords": [
                 "Snowflake",
                 "Python",
                 "SingleStore",
+                "Airflow",
+                "ETL",
                 "Java"
             ],
             "isCurrentRole": true,
@@ -250,9 +262,9 @@
             "endDate": "2020-12-01",
             "summary": "Built the front in Bootstrap, SCSS, Blade and Vue JS and backend in Laravel. ",
             "highlights": [
-                "Build an ecommerce platform frontend with modern UI components in **Vue** and **Laravel Blade**.",
-                "Designed the backend flow for *authentication via OTP*, *payment interface integration* and *cart & order management* in **Laravel**.",
-                "Bind UI with Backend with **GraphQL** and **REST API**."
+                "Implemented OTP based Authentication using either Email or Phone using Laravel & 3rd party API services. Also Google OAuth is integrated.",
+                "Build cart & order management system along with Payment Interface Integration.",
+                "Designed ecommerce modern UI components in Vue Js like Skeletal Loading, Product box with Zoom In, OTP input."
             ],
             "keywords": [
                 "Laravel",

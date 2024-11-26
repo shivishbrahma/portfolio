@@ -17,10 +17,10 @@
         font-size: 1.25rem;
     }
     &.DarkModeToggler__dark {
+        background-color: black;
         .icon {
             left: calc(100% - 1.5rem);
             color: white;
         }
-        background-color: black;
     }
 }

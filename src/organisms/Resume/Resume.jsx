@@ -27,6 +27,4 @@ function Resume(props) {
 
 Resume.propTypes = {};
 
-Resume.defaultProps = {};
-
 export default Resume;

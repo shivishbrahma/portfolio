@@ -18,9 +18,18 @@ const ResumeContent = React.forwardRef((props, ref) => {
         if (Array.isArray(highlights)) {
             return (
                 <ul>
-                    {highlights.map((ele, i) => (
-                        <li key={i} dangerouslySetInnerHTML={{ __html: marked.parseInline(ele) }} />
-                    ))}
+                    {highlights.map((ele, ind) => {
+                        if (Array.isArray(ele)) {
+                            return (
+                                <ul>
+                                    {ele.map((e, i) => (
+                                        <li key={i} dangerouslySetInnerHTML={{ __html: marked.parseInline(e) }}/>
+                                    ))}
+                                </ul>
+                            );
+                        }
+                        return <li key={ind} dangerouslySetInnerHTML={{ __html: marked.parseInline(ele) }} />;
+                    })}
                 </ul>
             );
         } else if (typeof highlights === "string") {
@@ -97,7 +106,7 @@ const ResumeContent = React.forwardRef((props, ref) => {
                                                     </span>{" "}
                                                     | {item.location}
                                                 </div>
-                                                <p className="Resume-section-content">
+                                                <div className="Resume-section-content">
                                                     {item.score ? (
                                                         <p>
                                                             {item.score < 10
@@ -107,7 +116,7 @@ const ResumeContent = React.forwardRef((props, ref) => {
                                                     ) : (
                                                         <></>
                                                     )}
-                                                </p>
+                                                </div>
                                             </li>
                                         ))}
                                     </ul>

@@ -20,6 +20,4 @@ Navlink.propTypes = {
 	children: PropTypes.node,
 };
 
-Navlink.defaultProps = {};
-
 export default Navlink;
