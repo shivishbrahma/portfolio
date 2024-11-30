@@ -10,14 +10,14 @@ const Globe3DTag = React.forwardRef(
             text,
             id,
             weight,
-            alpha,
-            scale,
-            left,
-            top,
-            useItemInlineStyles,
-            useHTML,
-            position,
-            itemClassName,
+            alpha = "1",
+            scale = "1",
+            left = "-50%",
+            top = "-50%",
+            useItemInlineStyles = true,
+            useHTML = false,
+            position = { x: 0, y: 0, z: 0 },
+            itemClassName = "",
             ...otherProps
         },
         tagRef
@@ -63,17 +63,6 @@ Globe3DTag.propTypes = {
     alpha: PropTypes.string,
     left: PropTypes.string,
     top: PropTypes.string
-};
-
-Globe3DTag.defaultProps = {
-    useItemInlineStyles: true,
-    itemClassName: "",
-    useHTML: false,
-    position: { x: 0, y: 0, z: 0 },
-    scale: "1",
-    alpha: "1",
-    left: "-50%",
-    top: "-50%"
 };
 
 const Globe3D = ({
