@@ -2,9 +2,15 @@
     "tools": [
         {
             "name": "Netstats",
-            "url": "/#/tools/netstats",
+            "url": "https://shivishbrahma.github.io/#/tools/netstats",
             "img_url": "images/tools/netstats.webp",
             "description": "Netstats is a tool for monitoring and tracking the status of a network"
+        },
+        {
+            "name": "Prettier",
+            "url": "https://shivishbrahma.github.io/kodakriti/#/prettier",
+            "img_url": "images/tools/prettier.webp",
+            "description": "Prettier is a tool for formatting code in JSON, YAML"
         }
     ]
 }
