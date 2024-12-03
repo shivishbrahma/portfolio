@@ -1,0 +1,17 @@
+{
+    "github": [
+        {
+            "repo": "https://github.com/Kademi/keditor",
+            "pull_requests": [
+                "https://github.com/Kademi/keditor/issues/226",
+                "https://github.com/Kademi/keditor/pull/234"
+            ]
+        },
+        {
+            "repo": "https://github.com/janeczku/calibre-web",
+            "pull_requests": [
+                "https://github.com/janeczku/calibre-web/pull/2970"
+            ]
+        }
+    ]
+}

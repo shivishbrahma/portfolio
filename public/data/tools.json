@@ -11,6 +11,12 @@
             "url": "https://shivishbrahma.github.io/kodakriti/#/prettier",
             "img_url": "images/tools/prettier.webp",
             "description": "Prettier is a tool for formatting code in JSON, YAML"
+        },
+        {
+            "name": "Nuclear Reactor",
+            "url": "https://shivishbrahma.github.io/nuclear-reactor/",
+            "img_url": "images/tools/nuclear_reactor.webp",
+            "description": "Nuclear Reactor showcases various UI components in ReactJS"
         }
     ]
 }
